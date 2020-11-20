@@ -1,23 +1,26 @@
-const isValid = function (s) {
-  if (s.length % 2 === 1) {
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+  if (s % 2 === 1) {
     return false
   }
 
   const stack = []
+  const map = new Map([
+    ['(', ')'],
+    ['{', '}'],
+    ['[', ']'],
+  ])
 
-  for (let i = 0; i < s.length; i++) {
-    const c = s[i]
-
-    if (c === '(' || c === '{' || c === '[') {
+  for (const c of s) {
+    if (map.has(c)) {
       stack.push(c)
     } else {
       const top = stack[stack.length - 1]
 
-      if (
-        (c === ')' && top === '(') ||
-        (c === ']' && top === '[') ||
-        (c === '}' && top === '{')
-      ) {
+      if (c === map.get(top)) {
         stack.pop()
       } else {
         return false
@@ -27,5 +30,3 @@ const isValid = function (s) {
 
   return stack.length === 0
 }
-
-console.log(isValid('()'))
