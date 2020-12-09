@@ -9,10 +9,14 @@ function TreeNode(val, left, right) {
  * @param {TreeNode} root
  * @return {number}
  */
-var maxDepth = function(root) {
+const maxDepth = function(root) {
+  // base case
   if (root === null) {
     return 0
-  } else {
-    return 1 + Math.max(maxDepth(root.left), maxDepth(root.right))
   }
+
+  const leftHeight = maxDepth(root.left)
+  const rightHeight = maxDepth(root.right)
+
+  return 1 + Math.max(leftHeight, rightHeight)
 };
