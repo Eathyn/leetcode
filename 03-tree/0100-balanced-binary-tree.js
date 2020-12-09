@@ -52,8 +52,8 @@ function TreeNode(val, left, right) {
 
     if (Math.abs(leftHeight - rightHeight) > 1) {
       return -1
-    } else {
-      return 1 + Math.max(leftHeight, rightHeight)
     }
+
+    return 1 + Math.max(leftHeight, rightHeight)
   }
 }
